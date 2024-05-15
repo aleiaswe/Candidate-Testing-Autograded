@@ -1,3 +1,4 @@
+const { run } = require('jest');
 const input = require('readline-sync');
 
 // TODO 2: modify your quiz app to ask 5 questions //
@@ -10,8 +11,8 @@ let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
 
-console.log(correctAnswer); 
-console.log(typeof correctAnswer);
+//console.log(correctAnswer); 
+//console.log(typeof correctAnswer);
 
 //TODO: Variables for Part 2
 let questions;
@@ -46,11 +47,13 @@ function gradeQuiz(candidateAnswers) {
   } else if (candidateAnswer != correctAnswer) { 
     console.log("Your answer is incorrect.");
   }
+
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
 
 
   return grade;
 }
+ 
 
 function runProgram() {
   askForName();
@@ -59,7 +62,7 @@ function runProgram() {
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
-return runProgram()
+//return runProgram()
 // ----------- Don't write any code or change any code below this line ---------- //
 module.exports = {
   candidateName: candidateName,
