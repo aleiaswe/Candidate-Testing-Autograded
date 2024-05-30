@@ -22,7 +22,7 @@ let questions = ["Who was the first American woman in space? ", "True or false: 
 ]
 
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswers = "";
+let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
@@ -33,32 +33,63 @@ console.log("Hello " + candidateName + "!");
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  //let candidateAnswers = input.question(questions); 
-
-  for (let i = 0; i < questions.length; i++) { 
-    console.log(questions[i]);
+ 
+  const input = require('readline-sync'); 
+  this.candidateAnswers = [];
+  // let candidateAnswers = input.question(questions[i], correctAnswers[j]);
+  for (i = 0; i < questions.length; i++) { 
+    this.candidateAnswers.push(input.question(questions[i]));
+    console.log("Your answer: " + this.candidateAnswers[i]);
+    // for (j = 0; j < correctAnswers.length - 4; j++) {
+    //   //let correctAnswers = candidateAnswers
+    //   //let candidateAnswers = input.question(questions[i]);
+       console.log("Correct Answer: " + correctAnswers[i]);
+    // }
   }
-
-  /*if (candidateAnswers == correctAnswers) { 
-    console.log(`Your answer ${candidateAnswers} is correct`); 
-  } else { 
-    console.log(`Your answer ${candidateAnswers} is incorrect`);
+  // console.log(this.candidateAnswers);
+}
     
-  }*/
-} 
-
-
-function gradeQuiz(candidateAnswers) {
+  
+function gradeQuiz(Answers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+//console.log(`Here are your responses: ${askQuestion(candidateAnswers)}`);
+  // askQuestion()
+  let grade = 0; 
+  // let calculatedGrade = 5/5 * 100;  //TODO 3.2 use this variable to calculate the candidates score.
 
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
-  return grade;
+for (let i = 0; i < questions.length; i++) { 
+  if (Answers[i].toLowerCase() === correctAnswers[i].toLowerCase()) { 
+    grade++;
+    console.log("You are correct")
+  // let calculatedGrade = 5/5 * 100;
+  // grade++;
+} else { 
+  console.log("You are incorrect");
 }
- 
+}
+/* this.candidateAnswers.push */  let calculatedGrade = grade / 5 * 100;
+//console.log(typeof calculatedGrade)
+//console.log(calculatedGrade + "%");
+// console.log(calculatedGrade)
+ if (calculatedGrade === 100) { 
+  console.log(`Your score is ${calculatedGrade + "%"}, you have passed the quiz.`)
+} else if (calculatedGrade === 80) { 
+  console.log(`Your score is ${calculatedGrade + "%"}, you have failed the quiz. Please try again. `)
+} else if (calculatedGrade === 60) { 
+  console.log(`Your score is ${calculatedGrade + "%"}, you have failed the quiz. Please try again.`)
+} else if (calculatedGrade === 40) { 
+  console.log(`Your score is ${calculatedGrade + "%"}, you have failed the quiz. Please try again.`)
+} else if (calculatedGrade === 20) { 
+  console.log(`Your score is ${calculatedGrade + "%"}, you have failed the quiz. Please try again.`)
+} else if (calculatedGrade === 0) { 
+ console.log(`Your score is ${calculatedGrade + "%"}, you have failed the quiz. Please try again.`)
+}
+return calculatedGrade;
+}
+//console.log(typeof calculatedGrade)
+
+
 
 function runProgram() {
   askForName();
